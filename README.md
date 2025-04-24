@@ -1,5 +1,19 @@
 # NewsApp
 
+> ⚙️ **Configuration**  
+Before running the application, make sure to set the backend base URL in the `src/environments/environment.ts` file:
+
+```ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:5079/'
+};
+```
+
+This ensures the frontend communicates properly with your backend API.
+
+---
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
 
 ## Development server
