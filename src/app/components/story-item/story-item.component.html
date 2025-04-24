@@ -1,0 +1,18 @@
+<div class="breaking-news-item d-flex align-items-center">
+    <div class="label">
+      <span class="text">BREAKING<br />NEWS</span>
+    </div>
+    <div class="headline-container flex-grow-1">
+      <div class="headline">
+        <a *ngIf="story?.url; else noLink" [href]="story.url" target="_blank" rel="noopener noreferrer">
+          {{ story.title }}
+        </a>
+        <ng-template #noLink>
+          {{ story.title }}
+        </ng-template>
+      </div>
+      <div class="subtext">By : {{ story.by }}</div>
+    </div>
+    <div class="live-tag">Time : {{story.time * 1000 | date: 'medium'}}</div>
+  </div>
+  

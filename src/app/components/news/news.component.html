@@ -1,0 +1,41 @@
+<div class="story-list">
+    <h2>Newest Stories</h2>
+
+      <div class="mb-3 d-flex justify-content-center gap-4 w-70">
+        <input class="form-control w-75" type="text" [(ngModel)]="searchQuery" placeholder="Search stories..." />
+        <button class="btn btn-primary" (click)="searchStories()">Search</button>
+      </div>
+    
+      <div class="mb-3 d-flex justify-content-center gap-4 align-items-center">
+        <div>
+          <label>Page Size:</label>
+          <select class="form-select" [(ngModel)]="pageSize" (change)="changePageSize(pageSize)">
+            <option [value]="10">10</option>
+            <option [value]="20">20</option>
+            <option [value]="50">50</option>
+          </select>
+        </div>
+      
+        <div>
+          <label>Go to Page:</label>
+          <select class="form-select" [(ngModel)]="currentPage" (change)="goToPage(currentPage)">
+            <option *ngFor="let page of pageNumbers" [value]="page">{{ page }}</option>
+          </select>
+        </div>
+      </div>
+      
+      
+      <app-loader *ngIf="loading"></app-loader>
+      <ul class="list-unstyled">
+        <app-story-item *ngFor="let story of stories" [story]="story"></app-story-item>
+      </ul>
+      
+      
+      <div class="d-flex justify-content-center align-items-center gap-3 mt-4">
+        <button class="btn btn-outline-secondary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button class="btn btn-outline-secondary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+
+
+</div>
